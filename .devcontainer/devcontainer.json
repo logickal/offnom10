@@ -9,7 +9,8 @@
 			"extensions": [
 				"nickytonline.vscode-gatsby-snippets",
 				"GitHub.codespaces",
-				"GitHub.remotehub"
+				"GitHub.remotehub",
+				"GitHub.copilot"
 			]
 		}
 	}
