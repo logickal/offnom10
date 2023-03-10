@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 
 const ArticleList = () => {
   const data = useStaticQuery(graphql`
@@ -9,6 +9,7 @@ const ArticleList = () => {
                 id
                 title
                 created(formatString: "MMMM DD, YYYY")
+                gatsbyPath(filePath: "/articles/{NodeArticle.title}")
             }
         }
     }
@@ -22,7 +23,10 @@ const ArticleList = () => {
       <ul>
         {articles.map(article => (
           <li key={article.id}>
-            <h3>{article.title}</h3>
+            <h3><Link to={`${article.gatsbyPath}`}>
+                {article.title}
+                </Link>
+                </h3>
             <p>Published on {article.created}</p>
           </li>
         ))}
