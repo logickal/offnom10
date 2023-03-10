@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: `gatsby-source-drupal`,
       options: {
-        baseUrl: `https://offnom10.com/`,
+        baseUrl: `https://live-offnom10-backend.pantheonsite.io/`,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
       },
     },
