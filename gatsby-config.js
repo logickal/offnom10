@@ -12,7 +12,11 @@ module.exports = {
       options: {
         baseUrl: `https://live-offnom10-backend.pantheonsite.io/`,
         apiBase: `jsonapi`, // optional, defaults to `jsonapi`
+        concurrentFileRequests: 10, // optional, defaults to 10
       },
     },
+      `gatsby-plugin-image`,
+      `gatsby-plugin-sharp`,
+      `gatsby-transformer-sharp`
   ]
 }
