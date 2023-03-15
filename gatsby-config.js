@@ -15,6 +15,12 @@ module.exports = {
         concurrentFileRequests: 10, // optional, defaults to 10
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/gatsby-config.js`,
+      }
+    },
       `gatsby-plugin-image`,
       `gatsby-plugin-sharp`,
       `gatsby-transformer-sharp`
