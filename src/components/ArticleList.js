@@ -1,17 +1,34 @@
 import React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
+import DrupalImage from "./DrupalImage"
 
 const ArticleList = () => {
   const data = useStaticQuery(graphql`
     query {
-        allNodeArticle(sort: {created: DESC}) {
-            nodes {
-                id
-                title
-                created(formatString: "MMMM DD, YYYY")
-                gatsbyPath(filePath: "/articles/{NodeArticle.title}")
+      allNodeArticle(sort: {created: DESC}) {
+        nodes {
+          id
+          title
+          created(formatString: "MMMM DD, YYYY")
+          gatsbyPath(filePath: "/articles/{NodeArticle.title}")
+          relationships {
+            field_image {
+              localFile {
+                publicURL
+                extension
+                childImageSharp {
+                  gatsbyImageData(
+                    height: 100, 
+                    width: 100, 
+                    placeholder: BLURRED, 
+                    formats: [AUTO, WEBP, AVIF]
+                    )
+                }
+              }
             }
+          }
         }
+      }
     }
   `)
 
@@ -27,6 +44,7 @@ const ArticleList = () => {
                 {article.title}
                 </Link>
                 </h3>
+              <DrupalImage field_image={article.relationships.field_image} width="100" height="100" />
             <p>Published on {article.created}</p>
           </li>
         ))}
